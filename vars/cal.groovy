@@ -6,12 +6,12 @@ def login() {
     }
 }
 
-def build(String tag,String file_name) {
+def build(String build_tag) {
     def scriptcontents = libraryResource "Dockerfile"
     writeFile file:"Dockerfile", text: scriptcontents
 
     sh """
-        docker build --build-arg file_name="${file_name}" -t "${tag}"  .
+        docker build -t "${build_tag}"  .
     """
 }
 
